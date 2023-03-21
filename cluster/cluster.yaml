@@ -8,6 +8,8 @@ metadata:
   labels:
     testing.upbound.io/example-name: example
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     roleArnRef:
@@ -26,6 +28,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     clusterNameSelector:
@@ -44,6 +48,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     assumeRolePolicy: |
       {
@@ -68,6 +74,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
     roleRef:
@@ -82,6 +90,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     mapPublicIpOnLaunch: true
@@ -99,6 +109,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     mapPublicIpOnLaunch: true
@@ -116,6 +128,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     availabilityZone: us-east-1b
@@ -132,6 +146,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     tags:
@@ -148,6 +164,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     routeTableIdRef:
@@ -164,6 +182,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     enableDnsHostnames: true
     region: us-east-1
@@ -180,6 +200,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     region: us-east-1
     vpcIdRef:
@@ -194,6 +216,8 @@ metadata:
   annotations:
     meta.upbound.io/example-id: eks/v1beta1/cluster
 spec:
+  providerConfigRef:
+    name: upbound-provider-aws
   forProvider:
     defaultRouteTableIdRef:
       name: sample-vpc
