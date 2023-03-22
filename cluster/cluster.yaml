@@ -16,6 +16,8 @@ spec:
       - subnetIdRefs:
           - name: sample-subnet1
           - name: sample-subnet2
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -34,6 +36,9 @@ spec:
   writeConnectionSecretToRef:
     name: cluster-conn
     namespace: upbound-system
+  providerConfigRef:
+    name: aws-provider-config
+
 
 ---
 
@@ -58,6 +63,8 @@ spec:
           }
         ]
       }
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -72,6 +79,26 @@ spec:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
     roleRef:
       name: sample-eks-cluster
+  providerConfigRef:
+    name: aws-provider-config
+
+---
+
+apiVersion: ec2.aws.upbound.io/v1beta1
+kind: VPC
+metadata:
+  name: sample-vpc
+  annotations:
+    meta.upbound.io/example-id: eks/v1beta1/cluster
+spec:
+  forProvider:
+    enableDnsHostnames: true
+    region: us-east-1
+    cidrBlock: 172.16.0.0/16
+    tags:
+      Name: DemoVpc
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -89,6 +116,8 @@ spec:
     vpcIdRef:
       name: sample-vpc
     cidrBlock: 172.16.10.0/24
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -106,6 +135,9 @@ spec:
     vpcIdRef:
       name: sample-vpc
     cidrBlock: 172.16.11.0/24
+  providerConfigRef:
+    name: aws-provider-config
+
 
 ---
 
@@ -122,6 +154,8 @@ spec:
     vpcIdRef:
       name: sample-vpc
     cidrBlock: 172.16.12.0/24
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -138,6 +172,8 @@ spec:
       Name: example
     vpcIdRef:
       name: sample-vpc
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -154,22 +190,8 @@ spec:
       name: example
     subnetIdRef:
       name: private-subnet
-
----
-
-apiVersion: ec2.aws.upbound.io/v1beta1
-kind: VPC
-metadata:
-  name: sample-vpc
-  annotations:
-    meta.upbound.io/example-id: eks/v1beta1/cluster
-spec:
-  forProvider:
-    enableDnsHostnames: true
-    region: us-east-1
-    cidrBlock: 172.16.0.0/16
-    tags:
-      Name: DemoVpc
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -184,6 +206,8 @@ spec:
     region: us-east-1
     vpcIdRef:
       name: sample-vpc
+  providerConfigRef:
+    name: aws-provider-config
 
 ---
 
@@ -202,3 +226,5 @@ spec:
       - gatewayIdRef:
           name: example
         cidrBlock: 0.0.0.0/0
+  providerConfigRef:
+    name: aws-provider-config
