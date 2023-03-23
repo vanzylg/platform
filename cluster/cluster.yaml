@@ -244,6 +244,7 @@ spec:
   forProvider:
     region: us-east-1
     type: String
+    tier: Advanced
     valueSecretRef:
       key: kubeconfig
       name: cluster-conn
