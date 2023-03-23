@@ -232,23 +232,23 @@ spec:
 
 ---
 
-# apiVersion: ssm.aws.upbound.io/v1beta1
-# kind: Parameter
-# metadata:
-#   annotations:
-#     meta.upbound.io/example-id: ssm/v1beta1/parameter
-#   labels:
-#     testing.upbound.io/example-name: cluster-endpoint
-#   name: cluster-endpoint
-# spec:
-#   forProvider:
-#     region: us-east-1
-#     type: String
-#     tier: Advanced
-#     valueSecretRef:
-#       key: kubeconfig
-#       name: cluster-conn
-#       namespace: crossplane-system
+apiVersion: ssm.aws.upbound.io/v1beta1
+kind: Parameter
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ssm/v1beta1/parameter
+  labels:
+    testing.upbound.io/example-name: cluster-endpoint
+  name: cluster-endpoint
+spec:
+  forProvider:
+    region: us-east-1
+    type: String
+    tier: Standard
+    valueSecretRef:
+      key: endpoint
+      name: cluster-conn
+      namespace: crossplane-system
 
-#   providerConfigRef:
-#     name: aws-provider-config
+  providerConfigRef:
+    name: aws-provider-config
