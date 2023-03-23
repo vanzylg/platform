@@ -245,7 +245,7 @@ spec:
     region: us-east-1
     type: String
     valueSecretRef:
-      key: endpoint
+      key: kubeconfig
       name: cluster-conn
       namespace: crossplane-system
 
