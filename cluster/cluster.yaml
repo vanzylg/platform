@@ -11,7 +11,7 @@ spec:
   forProvider:
     region: us-east-1
     roleArnRef:
-      name: dev1-eks-cluster
+      name: dev1-eks-cluster-role
     vpcConfig:
       - subnetIdRefs:
           - name: dev1-subnet1
