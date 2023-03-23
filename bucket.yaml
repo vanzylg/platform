@@ -20,4 +20,37 @@ spec:
     versioningConfiguration:
       status: Enabled
   providerConfigRef:
-    name: aws-provider
+    name: aws-provider-config
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: bucket-name
+  namespace: crossplane-system
+type: Opaque
+stringData:
+  bucketName: "crossplane-example-repl-dest-12300001-t"
+
+---
+
+apiVersion: ssm.aws.upbound.io/v1beta1
+kind: Parameter
+metadata:
+  annotations:
+    meta.upbound.io/example-id: ssm/v1beta1/parameter
+  labels:
+    testing.upbound.io/example-name: bucket-name
+  name: bucket-name
+spec:
+  forProvider:
+    region: us-east-1
+    type: String
+    valueSecretRef:
+      key: bucketName
+      name: bucket-name
+      namespace: crossplane-system
+
+  providerConfigRef:
+    name: aws-provider-config

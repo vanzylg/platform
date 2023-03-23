@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-bucket
+  labels:
+    app: test-bucket
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: test-bucket
+  template:
+    metadata:
+      labels:
+        app: test-bucket
+    spec:
+      containers:
+      - name: test-bucket
+        image: public.ecr.aws/t9u4m3o1/test-bucket:latest
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-bucket-loadbalancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: test-bucket
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
