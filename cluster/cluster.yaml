@@ -16,8 +16,7 @@ spec:
       - subnetIdRefs:
           - name: dev1-subnet1
           - name: dev1-subnet2
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -35,9 +34,8 @@ spec:
         testing.upbound.io/example-name: example
   writeConnectionSecretToRef:
     name: cluster-conn
-    namespace: crossplane-system
-  providerConfigRef:
-    name: aws-provider-config
+    namespace: argocd
+
 
 
 ---
@@ -63,8 +61,7 @@ spec:
           }
         ]
       }
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -79,8 +76,7 @@ spec:
     policyArn: arn:aws:iam::aws:policy/AmazonEKSClusterPolicy
     roleRef:
       name: dev1-eks-cluster-role
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -97,8 +93,7 @@ spec:
     cidrBlock: 172.16.0.0/16
     tags:
       Name: dev1-vpc
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -116,8 +111,7 @@ spec:
     vpcIdRef:
       name: dev1-vpc
     cidrBlock: 172.16.10.0/24
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -135,8 +129,7 @@ spec:
     vpcIdRef:
       name: dev1-vpc
     cidrBlock: 172.16.11.0/24
-  providerConfigRef:
-    name: aws-provider-config
+
 
 
 ---
@@ -154,8 +147,7 @@ spec:
     vpcIdRef:
       name: dev1-vpc
     cidrBlock: 172.16.12.0/24
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -172,8 +164,7 @@ spec:
       Name: dev1-routetable
     vpcIdRef:
       name: dev1-vpc
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -190,8 +181,7 @@ spec:
       name: dev1-routetable
     subnetIdRef:
       name: dev1-private-subnet
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -206,8 +196,7 @@ spec:
     region: us-east-1
     vpcIdRef:
       name: dev1-vpc
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -226,8 +215,7 @@ spec:
       - gatewayIdRef:
           name: dev1-igw
         cidrBlock: 0.0.0.0/0
-  providerConfigRef:
-    name: aws-provider-config
+
 
 
 ---
@@ -250,5 +238,3 @@ spec:
       name: cluster-conn
       namespace: crossplane-system
 
-  providerConfigRef:
-    name: aws-provider-config

@@ -19,8 +19,7 @@ spec:
             sseAlgorithm: AES256
     versioningConfiguration:
       status: Enabled
-  providerConfigRef:
-    name: aws-provider-config
+
 
 ---
 
@@ -52,5 +51,3 @@ spec:
       name: bucket-name
       namespace: crossplane-system
 
-  providerConfigRef:
-    name: aws-provider-config
