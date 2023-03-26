@@ -1,0 +1,11 @@
+project: default
+source:
+  repoURL: 'https://charts.crossplane.io/stable'
+  targetRevision: 1.11.1
+  chart: crossplane
+destination:
+  namespace: crossplane-system
+  name: dev1
+syncPolicy:
+  syncOptions:
+    - CreateNamespace=true

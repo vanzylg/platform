@@ -318,3 +318,14 @@ spec:
 
 ---
 
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev1-node-policy-3
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEC2RoleforSSM
+    roleRef:
+      name: dev1-node-role
+
+---

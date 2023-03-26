@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: app-deploy
+  name: bucket
 spec:
   destination:
-    name: dev1
-    namespace: default
+    name: in-cluster
+    namespace: crossplane-system
     server: ''
   source:
-    path: ./deploy-app
+    path: ./deploy-infra
     repoURL: 'https://github.com/vanzylg/platform.git'
     targetRevision: HEAD
   project: default

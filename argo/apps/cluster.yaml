@@ -1,0 +1,8 @@
+project: default
+source:
+  repoURL: 'https://github.com/vanzylg/platform.git'
+  path: ./cluster
+  targetRevision: HEAD
+destination:
+  namespace: crossplane-system
+  name: in-cluster
