@@ -324,7 +324,7 @@ metadata:
   name: dev1-node-policy-4
 spec:
   forProvider:
-    policyArn: arn:aws:iam::aws:policy/AmazonEC2RoleforSSM
+    policyArn: arn:aws:iam::aws:policy/service-role/AmazonEC2RoleforSSM
     roleRef:
       name: dev1-node-role
 
