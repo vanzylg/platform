@@ -1,0 +1,15 @@
+apiVersion: repositories.argocd.crossplane.io/v1alpha1
+kind: Repository
+metadata:
+  name: platform2
+spec:
+  forProvider:
+    repo: https://github.com/vanzylg/platform.git
+    type: git
+    # username: example-user
+    # passwordRef:
+    #   name: example-project.git
+    #   namespace: crossplane-system
+    #   key: token
+  providerConfigRef:
+    name: argocd-provider

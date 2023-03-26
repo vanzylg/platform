@@ -1,0 +1,14 @@
+apiVersion: argocd.crossplane.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: argocd-provider
+spec:
+  serverAddr: ad54dd25e33c64975ae1e8f5e7d05150-1298179871.us-east-1.elb.amazonaws.com:443
+  insecure: true
+  plainText: false
+  credentials:
+    source: Secret
+    secretRef:
+      namespace: crossplane-system
+      name: argocd-credentials
+      key: authToken

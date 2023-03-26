@@ -238,3 +238,83 @@ spec:
       name: cluster-conn
       namespace: crossplane-system
 
+---
+
+apiVersion: eks.aws.upbound.io/v1beta1
+kind: NodeGroup
+metadata:
+  name: default
+spec:
+  forProvider:
+    region: us-east-1
+    clusterNameRef: 
+      name: dev1-eks-cluster
+    nodeRoleArnRef:
+      name: dev1-node-role
+    subnetIdRefs:
+      - name: dev1-subnet1
+      - name: dev1-subnet2
+    scalingConfig:
+      - minSize: 1
+        maxSize: 1
+        desiredSize: 1
+
+---
+
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: Role
+metadata:
+  name: dev1-node-role
+spec:
+  forProvider:
+    assumeRolePolicy: |
+      {
+        "Version": "2012-10-17",
+        "Statement": [
+          {
+            "Effect": "Allow",
+            "Principal": {
+              "Service": "ec2.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+          }
+        ]
+      }
+---
+
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev1-node-policy
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy
+    roleRef:
+      name: dev1-node-role
+
+---
+
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev1-node-policy-2
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+    roleRef:
+      name: dev1-node-role
+
+---
+
+apiVersion: iam.aws.upbound.io/v1beta1
+kind: RolePolicyAttachment
+metadata:
+  name: dev1-node-policy-3
+spec:
+  forProvider:
+    policyArn: arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly
+    roleRef:
+      name: dev1-node-role
+
+---
+
