@@ -1,8 +1,14 @@
-project: default
-source:
-  repoURL: 'https://github.com/vanzylg/platform.git'
-  path: ./cluster
-  targetRevision: HEAD
-destination:
-  namespace: crossplane-system
-  name: in-cluster
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster
+spec:
+  destination:
+    name: ''
+    namespace: crossplane-system
+    server: 'https://kubernetes.default.svc'
+  source:
+    path: ./cluster
+    repoURL: 'https://github.com/vanzylg/platform.git'
+    targetRevision: HEAD
+  project: default
